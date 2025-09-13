@@ -1,10 +1,10 @@
-"use client";
+"use client"
 
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"
 
 export default function BackgroundOrbs() {
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none py-72">
+    <div className="fixed inset-0 overflow-hidden pointer-events-none">
       {/* Large gradient orbs */}
       <motion.div
         className="absolute w-96 h-96 rounded-full opacity-20"
@@ -86,5 +86,5 @@ export default function BackgroundOrbs() {
         />
       ))}
     </div>
-  );
+  )
 }
