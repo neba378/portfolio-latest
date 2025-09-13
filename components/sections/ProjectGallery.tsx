@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { useState, useRef } from "react"
-import { motion, useInView, AnimatePresence } from "framer-motion"
-import { ExternalLink, Github, Play } from "lucide-react"
-import Image from "next/image"
+import { useState, useRef } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { ExternalLink, Github, Play } from "lucide-react";
+import Image from "next/image";
 
 const projects = [
   {
@@ -13,7 +13,14 @@ const projects = [
     description:
       "Telegram-based AI agent that scrapes job listings, filters by user preferences, and provides intelligent alerts. Reduced job-search time by 80% with AI-driven recommendations.",
     image: "/ai-job-hunter-bot.png",
-    tech: ["Node.js", "TypeScript", "Playwright", "Telegraf", "Docker", "AI Agents"],
+    tech: [
+      "Node.js",
+      "TypeScript",
+      "Playwright",
+      "Telegraf",
+      "Docker",
+      "AI Agents",
+    ],
     color: "#ff6b6b",
     featured: true,
     github: "https://github.com/neba378/ai-job-hunter",
@@ -90,21 +97,34 @@ const projects = [
     live: "https://neba378.github.io/Typing-Game/",
     video: "https://example.com/video",
   },
-]
+];
 
-const categories = ["All", "AI/Automation", "Healthcare/AI", "E-commerce", "Web Development", "Frontend", "Gaming"]
+const categories = [
+  "All",
+  "AI/Automation",
+  "Healthcare/AI",
+  "E-commerce",
+  "Web Development",
+  "Frontend",
+  "Gaming",
+];
 
 export default function ProjectGallery() {
-  const [selectedCategory, setSelectedCategory] = useState("All")
-  const [selectedProject, setSelectedProject] = useState<number | null>(null)
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedProject, setSelectedProject] = useState<number | null>(null);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const filteredProjects =
-    selectedCategory === "All" ? projects : projects.filter((project) => project.category === selectedCategory)
+    selectedCategory === "All"
+      ? projects
+      : projects.filter((project) => project.category === selectedCategory);
 
   return (
-    <section id="projects" className="relative py-24 bg-gradient-to-b from-gray-900 to-black">
+    <section
+      id="projects"
+      className="relative py-24 bg-gradient-to-b from-gray-900 to-black"
+    >
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           ref={ref}
@@ -119,7 +139,8 @@ export default function ProjectGallery() {
             </span>
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-12">
-            Explore my universe of impossible creations - each project pushes the boundaries of what's possible
+            Explore my universe of impossible creations - each project pushes
+            the boundaries of what's possible
           </p>
 
           {/* Category Filter */}
@@ -199,17 +220,6 @@ export default function ProjectGallery() {
                       >
                         <ExternalLink size={20} />
                       </motion.a>
-                      <motion.a
-                        href={project.video}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-3 bg-black/80 rounded-full text-white hover:bg-white hover:text-black transition-colors duration-300"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <Play size={20} />
-                      </motion.a>
                     </div>
                   </div>
                 </div>
@@ -238,7 +248,9 @@ export default function ProjectGallery() {
                     {project.title}
                   </h3>
 
-                  <p className="text-gray-400 mb-4 leading-relaxed">{project.description}</p>
+                  <p className="text-gray-400 mb-4 leading-relaxed">
+                    {project.description}
+                  </p>
 
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
@@ -257,5 +269,5 @@ export default function ProjectGallery() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
